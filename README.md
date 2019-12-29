@@ -1,4 +1,8 @@
-# Image Resize Helper for Laravel 5.x
+# Image Resize Helper for Laravel 6.x
+
+## Forked
+
+This project is forked from MaximumAdvertising/laravel-image-resize, for adding laravel 6.x support.
 
 Dynamically resize an image and returns the URL using Intervention and Storage
 
@@ -7,7 +11,7 @@ Dynamically resize an image and returns the URL using Intervention and Storage
 
 ## Require
 
-- Laravel 5+
+- Laravel 6+
 - Intervention Image ^2.4
 
 ## Supported Filesystem Drivers
