@@ -67,7 +67,7 @@ class ImageResize
             return '';
         }
 
-        if (!in_array(pathinfo($path)['extension'], ['jpg', 'jpeg', 'png', 'gif'])) {
+        if (!in_array(strtolower(pathinfo($path)['extension']), ['jpg', 'jpeg', 'png', 'gif'])) {
             return $this->filePlaceholder(pathinfo($path), $path);
         }
 
@@ -208,6 +208,8 @@ class ImageResize
             case 'resize':
                 try {
                     $image = Image::make(Storage::get($this->path))
+                        ->setFileInfoFromPath(storage_path('app/' . $this->path))
+                        ->orientate()
                         ->{$this->action}($this->width, $this->height, function ($constraint) {
                             $constraint->aspectRatio();
                             $constraint->upsize();
