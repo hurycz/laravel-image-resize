@@ -213,9 +213,18 @@ class ImageResize
                         ->{$this->action}($this->width, $this->height, function ($constraint) {
                             $constraint->aspectRatio();
                             $constraint->upsize();
-                        })->encode(Storage::mimeType($this->path));
+                        })->encode('jpeg', 75);
 
-                    $this->upload($this->targetPath, (string) $image, Storage::mimeType($this->path));
+                    $this->upload($this->targetPath, (string) $image, 'jpeg');
+
+                    $image2 = Image::make(Storage::get($this->path))
+                        ->setFileInfoFromPath(storage_path('app/' . $this->path))
+                        ->orientate()
+                        ->{$this->action}($this->width, $this->height, function ($constraint) {
+                            $constraint->aspectRatio();
+                            $constraint->upsize();
+                        })->encode('webp', 75);
+                    $this->upload(str_replace('jpeg', 'webp', $this->targetPath), (string) $image2, 'webp');
                 } catch (Exception $e) {
                     return false;
                 }
