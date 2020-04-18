@@ -214,6 +214,8 @@ class ImageResize
                             $constraint->aspectRatio();
                             $constraint->upsize();
                         })->encode('jpeg', 75);
+                    
+                    $this->basename = pathinfo($this->targetPath)['basename'];
 
                     $this->upload($this->targetPath, (string) $image, 'jpeg');
 
@@ -224,7 +226,11 @@ class ImageResize
                             $constraint->aspectRatio();
                             $constraint->upsize();
                         })->encode('webp', 75);
-                    $this->upload(str_replace('jpeg', 'webp', $this->targetPath), (string) $image2, 'webp');
+                    
+                    $this->targetPath = str_replace('jpeg', 'webp', $this->targetPath);
+                    $this->basename = pathinfo($this->targetPath)['basename'];
+
+                    $this->upload($this->targetPath, (string) $image2, 'webp');
                 } catch (Exception $e) {
                     return false;
                 }
