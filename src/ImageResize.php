@@ -192,6 +192,11 @@ class ImageResize
         return $url;
     }
 
+    private function replace_extension($filename, $new_extension) {
+        $info = pathinfo($filename);
+        return $info['dirname']."/".$info['filename'] . '.' . $new_extension;
+    }
+
     private function resize(): bool
     {
         if (!$this->sourceTimestamp) {
@@ -214,6 +219,8 @@ class ImageResize
                             $constraint->aspectRatio();
                             $constraint->upsize();
                         })->encode('jpeg', 75);
+
+                    $this->targetPath = $this->replace_extension($this->targetPath, 'jpeg');
                     
                     $this->basename = pathinfo($this->targetPath)['basename'];
 
@@ -227,7 +234,7 @@ class ImageResize
                             $constraint->upsize();
                         })->encode('webp', 75);
                     
-                    $this->targetPath = str_replace('jpeg', 'webp', $this->targetPath);
+                    $this->targetPath = $this->replace_extension($this->targetPath, 'webp');
                     $this->basename = pathinfo($this->targetPath)['basename'];
 
                     $this->upload($this->targetPath, (string) $image2, 'webp');
