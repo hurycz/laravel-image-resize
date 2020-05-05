@@ -1,5 +1,5 @@
 {
-    "name": "tdicknet/laravel-image-resize",
+    "name": "maximumadvertising/laravel-image-resize",
     "description": "Dynamically resize an image and returns the URL using Intervention and Storage",
     "homepage": "https://github.com/MaximumAdvertising/laravel-image-resize",
     "keywords":
