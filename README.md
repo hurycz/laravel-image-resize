@@ -1,8 +1,8 @@
-# Image Resize Helper for Laravel 6.x
+# Image Resize Helper for Laravel 7.x
 
 ## Forked
 
-This project is forked from MaximumAdvertising/laravel-image-resize, for adding laravel 6.x support.
+This project is forked from MaximumAdvertising/laravel-image-resize, for adding laravel 7.x support.
 
 Dynamically resize an image and returns the URL using Intervention and Storage
 
@@ -11,7 +11,7 @@ Dynamically resize an image and returns the URL using Intervention and Storage
 
 ## Require
 
-- Laravel 6+
+- Laravel 7+
 - Intervention Image ^2.4
 
 ## Supported Filesystem Drivers
@@ -25,7 +25,7 @@ Dynamically resize an image and returns the URL using Intervention and Storage
 This package can be installed through Composer.
 
 ```bash
-composer require maximumadvertising/laravel-image-resize
+composer require hurycz/laravel-image-resize
 ```
 
 For Laravel 5.4 and lower, you'll have to register the service provider and alias manually.
